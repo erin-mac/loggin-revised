@@ -1,29 +1,37 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
+import { logout } from './store';
 
-const UserPage = () => {
-
+const UserPage = ({ logOutUser }) => {
   return (
-    <div className='h100 w100 flex column align-items-center justify-center'>
-      <div className='flex'>
-        <img className='rounded mr1' />
+    <div className="h100 w100 flex column align-items-center justify-center">
+      <div className="flex">
+        <img className="rounded mr1" />
         <h1>Welcome back!</h1>
       </div>
       <div>
-        <button className='btn bg-red white p1 rounded'>Logout</button>
+        <button
+          className="btn bg-red white p1 rounded"
+          onClick={() => logOutUser()}
+        >
+          Logout
+        </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ user }) => {
-  return {
-  }
-}
+  return {};
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
+    logOutUser: () => dispatch(logout()),
   };
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserPage);
